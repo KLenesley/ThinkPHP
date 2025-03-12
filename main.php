@@ -19,9 +19,9 @@ function reponseQuiz($l, $DATABASE_HOST, $DATABASE_NAME, $DATABASE_TABLE, $DATAB
         $true = ;
         $false = ;
 
-        $stmt->bindParam(':idQ', $defense);
-        $stmt->bindParam(':true', $name);
-        $stmt->bindParam(':false', $strength);
+        $stmt->bindParam(':idQ', $idQestion);
+        $stmt->bindParam(':true', $true);
+        $stmt->bindParam(':false', $false);
 
         $stmt->execute();
     } catch (PDOException $e) {
