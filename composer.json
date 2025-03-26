@@ -18,6 +18,7 @@
     "require": {
         "monolog/monolog": "^3.8",
         "symfony/dotenv": "^7.2",
-        "phpmailer/phpmailer": "^6.9"
+        "phpmailer/phpmailer": "^6.9",
+        "twig/twig": "^3.20"
     }
 }

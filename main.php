@@ -13,8 +13,19 @@ $dotenv->load(__DIR__.'/.env');
 
 log_action('Debut du programme');
 
+
+$loader = new \Twig\Loader\FilesystemLoader('templates/');
+$twig = new \Twig\Environment($loader);
+
+echo $twig->render('quiz_form.html.twig', [
+    'Q1' => 'Miss Fortune',
+    'Q2' => 'Miss Fortune',
+]);
+
+/* Utilisation de twig
 // Affichage du formulaire
 require_once 'quiz_form.php';
+*/
 
 log_action('Fin du programme');
 ?>
