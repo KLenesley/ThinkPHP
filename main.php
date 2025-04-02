@@ -16,8 +16,25 @@ log_action('Debut du programme');
 $loader = new \Twig\Loader\FilesystemLoader('templates/');
 $twig = new \Twig\Environment($loader);
 
-
-
+try {
+// ToDo : boucle pour faire id 1, 2, 3
+    $stmt = $pdo->prepare("SELECT MAX(id) FROM quiz_test");
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    foreach ($result as $key => $value) {
+        for ($i = 1; $i <= 8; $i++) {
+            $stmt = $pdo->prepare("SELECT answer" . $i . " FROM quiz_test WHERE id = :id");
+            $stmt->bindParam(':id', $key);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            echo "Réponse " . $i . " : " . $result['answer' . $i] . "<br>"; 
+        }
+    }
+}
+catch (Exception $e) {
+    log_action("Erreur : " . $e->getMessage());
+    echo "Une erreur s'est produite : " . $e->getMessage() . "<br>";
+}
 
 echo $twig->render('quiz_form.html.twig', [
     'quizzes' => [
