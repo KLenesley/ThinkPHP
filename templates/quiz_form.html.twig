@@ -6,12 +6,12 @@
 </head>
 <body>
     <form action="quiz_process.php" method="POST">
-        <label for="question1">{{ Q1 }}</label><br>
+        <label for="question1">{{ q1 }}</label><br>
 
-        {% for answer in A1 %}
+        {# {% for answer in answers %}
             <input type="radio" name="question1" id="{{ answer }}" value="{{ answer }}">
             <label>{{ answer }}</label><br>
-        {% endfor %}
+        {% endfor %} #}
 
         <!-- Remplacement avec Twig
         <input type="radio" name="question1" id="Paris" value="Paris">
@@ -24,13 +24,14 @@
         <label>Marseille</label><br><br> 
         -->
 
-        <br>
-        
-        <label for="question2">{{ Q2 }}</label><br>
-
-        {% for answer in A2 %}
-            <input type="radio" name="question2" id="{{ answer }}" value="{{ answer }}">
-            <label>{{ answer }}</label><br>
+        {% set i = 0 %}
+        {% for quiz in quizzes %}
+            {% set i = i + 1 %}
+            <label for="question-{{ i }}">{{ quiz.question }}</label><br>
+            {% for answer in quiz.answers %}
+                <input type="radio" name="question-{{ i }}" id="{{ answer }}" value="{{ answer }}">
+                <label>{{ answer }}</label><br>
+            {% endfor %}
         {% endfor %}
 
         <!-- Remplacement avec Twig

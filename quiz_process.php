@@ -34,4 +34,6 @@ foreach ($question as $key => $value) {
     }
 }
 
+echo "<br> Retour à la page d'accueil <a href='index.php'>ici</a>";
+
 ?>
