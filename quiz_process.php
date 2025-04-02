@@ -2,36 +2,23 @@
 require_once 'db.php';
 require_once 'log.php';
 
-/* Code du début, plus d'utilité pour l'instant
-$question1 = $_POST['question1'];
-$question2 = $_POST['question2'];
+$nbParam = count($_POST) ;
+echo " Vous avez répondu à $nbParam questions <br><br>";
 
-log_action("Quiz submitted with answers: Q1 - $question1, Q2 - $question2");
-
-$stmt = $pdo->prepare("INSERT INTO quiz_answers (question1, question2) VALUES ($question1, $question2)");
-$stmt->bindParam(':question1', $question1);
-$stmt->bindParam(':question2', $question2);
-$stmt->execute();
-
-echo "Merci pour vos réponses !";
-*/
-
-$question = [1,2];
-$answer1 = $_POST['question1'];
-$answer2 = $_POST['question2'];
-
-foreach ($question as $key => $value) {
-    $stmt = $pdo->prepare("SELECT answer FROM quiz_answers WHERE id = :id");
-    $stmt->bindParam(':id', $value);
+foreach ($_POST as $key => $value) {
+    $stmt = $pdo->prepare("SELECT answerF FROM quiz_test WHERE id = :id");
+    $stmt->bindParam(':id', $key);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($result['answer'] == ${'answer' . $value}) {
-        echo "Bonne réponse pour la question $value !<br>";
+    if ($result['answerF'] == $value) {
+        echo "Bonne réponse pour la question $key !<br>";
     } else {
-        echo "Mauvaise réponse pour la question $value !<br>";
-        echo "La bonne réponse était : " . $result['answer'] . "<br>";
+        echo "Mauvaise réponse pour la question $key !<br>";
+        echo "Votre réponse était : " . $value . "<br>";
+        echo "La bonne réponse était : " . $result['answerF'] . "<br>";
     }
+    echo "<br>";
 }
 
 echo "<br> Retour à la page d'accueil <a href='index.php'>ici</a>";
