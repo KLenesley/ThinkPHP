@@ -5,49 +5,21 @@
     <title>Quiz</title>
 </head>
 <body>
-    <form action="quiz_process.php" method="POST">
-        <label for="question1">{{ q1 }}</label><br>
-
-        {# {% for answer in answers %}
-            <input type="radio" name="question1" id="{{ answer }}" value="{{ answer }}">
-            <label>{{ answer }}</label><br>
-        {% endfor %} #}
-
-        <!-- Remplacement avec Twig
-        <input type="radio" name="question1" id="Paris" value="Paris">
-        <label>Paris</label><br>
-        <input type="radio" name="question1" id="Berlin" value="Berlin">
-        <label>Berlin</label><br>
-        <input type="radio" name="question1" id="Moscou" value="Moscou">
-        <label>Moscou</label><br>
-        <input type="radio" name="question1" id="Marseille" value="Marseille">
-        <label>Marseille</label><br><br> 
-        -->
+    <form action="quiz_process.temp.php" method="POST">
 
         {% set i = 0 %}
         {% for quiz in quizzes %}
             {% set i = i + 1 %}
             <label for="question-{{ i }}">{{ quiz.question }}</label><br>
             {% for answer in quiz.answers %}
-                <input type="radio" name="question-{{ i }}" id="{{ answer }}" value="{{ answer }}">
+                <input type="radio" name="{{ i }}" id="{{ answer }}" value="{{ answer }}">
                 <label>{{ answer }}</label><br>
             {% endfor %}
         {% endfor %}
 
-        <!-- Remplacement avec Twig
-        <input type="radio" name="question2" id="Berlin" value="Berlin">
-        <label>Berlin</label><br>
-        <input type="radio" name="question2" id="Paris" value="Paris">
-        <label>Paris</label><br>
-        <input type="radio" name="question2" id="Algerie" value="Algerie">
-        <label>Algerie</label><br>
-        <input type="radio" name="question2" id="Tokyo" value="Tokyo">
-        <label>Tokyo</label><br><br>
-        -->
-
         <br>
 
-        <input type="submit" value="Soumettre">
+        <input type="submit" value="Envoyer">
     </form>
 </body>
 </html>

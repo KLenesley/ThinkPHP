@@ -25,13 +25,17 @@ echo $twig->render('quiz_form.html.twig', [
             'answers' => ['Paris', 'Lyon', 'Marseille', 'Toulouse'],
         ],
         'exo2' => [
-            'question' => 'Quelle est la capitale de l\'Allemagne ?',
+            'question' => "Quelle est la capitale de l'Allemagne ?",
             'answers' => ['Berlin', 'Munich', 'Hambourg', 'Francfort'],
         ],
         'exo3' => [
             'question' => 'Quelle est la capitale de l\'Italie ?',
             'answers' => ['Paris', 'Lyon', 'Marseille', 'Toulouse', 'Rome'],
-        ],        
+        ],
+        'exo4' => [
+            'question' => 'Quelle est la capitale de l\'Espagne ?',
+            'answers' => ['Madrid', 'Barcelone', 'Valence', 'Séville','Lisbonne','Rome','Paris','Berlin'],
+        ],
     ],
 ]);
 

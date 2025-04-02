@@ -2,7 +2,7 @@
 require_once 'db.php';
 require_once 'log.php';
 
-/* Codde du début, plus d'utilité pour l'instant
+/* Code du début, plus d'utilité pour l'instant
 $question1 = $_POST['question1'];
 $question2 = $_POST['question2'];
 

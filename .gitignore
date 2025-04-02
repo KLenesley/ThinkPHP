@@ -3,3 +3,6 @@
 /log/
 /.idea/
 /.vscode/
+
+# Exclude temporary files used for testing
+*.temp.*
