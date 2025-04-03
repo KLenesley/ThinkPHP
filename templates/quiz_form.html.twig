@@ -7,10 +7,15 @@
 <body>
     <form action="quiz_process.php" method="POST">
 
-        {% set i = 0 %}
-        {% for quiz in quizzes %}
-            {% set i = i + 1 %}
-            <label for="question-{{ i }}">{{ quiz.question }}</label><br>
+        {% set i = 0 %}        
+        {% for quiz in quizzes %}    
+            <h1>{{ dump(quiz.id) }}</h1>
+            <h1>{{ dump(i) }}</h1>
+            {% if quiz.id != id %}
+                <label for="question-{{ quiz.id }}">{{ quiz.question }}</label><br>
+            {% endif %}
+            {% set i = quiz.id %}        
+            
             {% for answer in quiz.answers %}
                 <input type="radio" name="{{ i }}" id="{{ answer }}" value="{{ answer }}">
                 <label>{{ answer }}</label><br>

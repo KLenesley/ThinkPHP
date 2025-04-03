@@ -7,7 +7,7 @@ echo " Vous avez répondu à $nbParam questions <br><br>";
 
 try {
     foreach ($_POST as $key => $value) {
-        $stmt = $pdo->prepare("SELECT answerF FROM quiz_test WHERE id = :id");
+        $stmt = $pdo->prepare("SELECT answerF FROM quiz_answers WHERE id = :id");
         $stmt->bindParam(':id', $key);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
